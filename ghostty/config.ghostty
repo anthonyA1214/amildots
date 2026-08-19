@@ -24,3 +24,6 @@ confirm-close-surface = false
 
 # Mouse
 mouse-hide-while-typing = true
+
+# Underline
+adjust-underline-position = 2
