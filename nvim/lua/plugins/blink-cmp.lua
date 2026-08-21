@@ -3,7 +3,9 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "saghen/blink.lib",
+      "zbirenbaum/copilot.lua",
       "giuxtaposition/blink-cmp-copilot",
+      "rafamadriz/friendly-snippets",
     },
     build = function()
       require("blink.cmp").build():pwait()
