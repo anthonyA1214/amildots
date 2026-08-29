@@ -1,27 +1,3 @@
-local function get_bufferline_keys()
-  -- stylua: ignore
-  local keys = {
-    -- Navigate between buffers
-    { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-    { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-
-    { "<leader>$", "<cmd>BufferLineGoToBuffer -1<cr>", desc = "Go to Last Buffer" },
-    { "<leader>^", "<cmd>BufferLineGoToBuffer 1<cr>", desc = "Go to First Buffer" },
-
-  }
-
-  -- Jump to buffer by number
-  for i = 1, 9 do
-    table.insert(keys, {
-      "<leader>" .. i,
-      "<cmd>BufferLineGoToBuffer " .. i .. "<cr>",
-      desc = "Go to Buffer " .. i,
-    })
-  end
-
-  return keys
-end
-
 return {
   "akinsho/bufferline.nvim",
   version = "*",
@@ -35,16 +11,24 @@ return {
         reveal = { "close" },
       },
       diagnostics = "nvim_lsp",
+
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
-        local s = " "
-        for e, n in pairs(diagnostics_dict) do
-          local sym = e == "error" and " "
-            or (e == "warning" and " " or " ")
-          s = s .. sym .. n
+        local icons = {
+          error = "",
+          warning = "",
+          info = "",
+          hint = "󰌶",
+        }
+        local order = { "error", "warning", "info", "hint" }
+        local parts = {}
+        for _, e in ipairs(order) do
+          local n = diagnostics_dict[e]
+          if n then
+            table.insert(parts, n .. icons[e])
+          end
         end
-        return s
+        return table.concat(parts, " ")
       end,
     },
   },
-  keys = get_bufferline_keys(),
 }
