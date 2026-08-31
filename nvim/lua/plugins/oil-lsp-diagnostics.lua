@@ -1,9 +1,11 @@
 return {
-  "JezerM/oil-lsp-diagnostics.nvim",
+  "anthonyA1214/oil-lsp-diagnostics.nvim",
   dependencies = { "stevearc/oil.nvim" },
   opts = {
-    count = true,
+    count = false,
     parent_dirs = true,
+    filename_highlight = false,
+    only_highest_severity = true,
     diagnostic_colors = {
       error = "DiagnosticError",
       warn = "DiagnosticWarn",
