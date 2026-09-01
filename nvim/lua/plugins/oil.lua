@@ -2,7 +2,18 @@ return {
   "stevearc/oil.nvim",
   ---@module 'oil'
   ---@type oil.SetupOpts
-  opts = {},
+  opts = {
+    delete_to_trash = true,
+    lsp_file_methods = {
+      -- Enable or disable LSP file operations
+      enabled = true,
+      -- Time to wait for LSP file operations to complete before skipping
+      timeout_ms = 1000,
+      -- Set to true to autosave buffers that are updated with LSP willRenameFiles
+      -- Set to "unmodified" to only save unmodified buffers
+      autosave_changes = "unmodified",
+    },
+  },
   -- Optional dependencies
   -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons

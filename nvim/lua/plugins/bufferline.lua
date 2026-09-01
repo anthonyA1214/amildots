@@ -5,6 +5,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
+      separator_style = "slant",
       hover = {
         enabled = true,
         delay = 0,

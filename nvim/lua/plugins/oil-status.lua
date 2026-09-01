@@ -1,4 +1,5 @@
 return {
-  "malewicz1337/oil-git.nvim",
+  "anthonyA1214/oil-status.nvim",
   dependencies = { "stevearc/oil.nvim" },
+  opts = {},
 }

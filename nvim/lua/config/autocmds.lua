@@ -1,3 +1,4 @@
+-- Disable line numbers in terminal buffers
 vim.api.nvim_create_autocmd({ "TermOpen", "BufWinEnter", "WinEnter" }, {
   callback = function()
     if vim.bo.buftype == "terminal" then
@@ -24,5 +25,37 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function(args)
     require("conform").format({ bufnr = args.buf })
+  end,
+})
+
+-- removes trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
+-- highlights yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 40,
+    })
+  end,
+})
+
+-- Notify LSP clients when a file is renamed/moved via oil.nvim (updates imports)
+vim.api.nvim_create_autocmd("User", {
+  pattern = "OilActionsPost",
+  callback = function(event)
+    if event.data.actions[1].type == "move" then
+      Snacks.rename.on_rename_file(
+        event.data.actions[1].src_url,
+        event.data.actions[1].dest_url
+      )
+    end
   end,
 })
