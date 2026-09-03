@@ -34,3 +34,11 @@ end, { desc = "Buffers" })
 map("n", "<leader>/", function()
   Snacks.picker.grep()
 end, { desc = "Grep" })
+
+-- nvim ufo
+map("n", "zR", function()
+  require("ufo").openAllFolds()
+end, { desc = "Open all folds" })
+map("n", "zM", function()
+  require("ufo").closeAllFolds()
+end, { desc = "Close all folds" })

@@ -21,8 +21,15 @@ return {
          ░ ░   ░      ░ ░        ░    ░         ░]],
       },
     },
+    input = { enabled = true },
     picker = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = {
+      enabled = true,
+      folds = {
+        open = true,
+        git_hl = true,
+      },
+    },
     indent = { enabled = true },
     rename = { enabled = true },
   },

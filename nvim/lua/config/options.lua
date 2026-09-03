@@ -26,6 +26,26 @@ local opt = vim.opt
 opt.autowrite = true -- Automatically save before commands like :next and :make
 opt.termguicolors = true -- Enable 24-bit RGB colors
 
+opt.list = true -- Show invisible characters
+opt.listchars = {
+  tab = "󰌒 ",
+  trail = "·",
+  nbsp = "󱁐",
+}
+
+opt.foldcolumn = "0"
+opt.foldlevel = 99 -- Set the default fold level to 99 (all folds open)
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+
 opt.number = true -- Show line numbers
 opt.relativenumber = true -- Show relative line numbers
 opt.cursorline = true -- Highlight the current line
