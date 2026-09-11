@@ -88,7 +88,7 @@ return {
     ins_left({
       "mode",
       icon = "",
-      separator = { right = "" },
+      separator = { right = "" },
       color = function()
         -- auto change color according to neovims mode
         local mode_color = {
@@ -120,7 +120,8 @@ return {
     ins_left({
       "branch",
       icon = "",
-      color = { fg = colors.fg, bg = colors.bg },
+      separator = { right = "" },
+      color = { fg = colors.fg, bg = colors.grey },
     })
 
     ins_left({
@@ -134,17 +135,18 @@ return {
 
     ins_right({
       "filetype",
-      colors = { fg = colors.fg, bg = colors.bg },
-    })
-
-    ins_right({
-      "progress",
       color = { fg = colors.fg, bg = colors.bg },
     })
 
     ins_right({
+      "progress",
+      separator = { left = "" },
+      color = { fg = colors.fg, bg = colors.grey },
+    })
+
+    ins_right({
       "location",
-      separator = { left = "" },
+      separator = { left = "" },
       color = { fg = colors.bg, bg = colors.blue, gui = "bold" },
       cond = conditions.buffer_not_empty,
     })

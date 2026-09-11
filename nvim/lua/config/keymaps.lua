@@ -1,4 +1,61 @@
 local map = vim.keymap.set
+-- better up/down
+map(
+  { "n", "x" },
+  "j",
+  "v:count == 0 ? 'gj' : 'j'",
+  { desc = "Down", expr = true, silent = true }
+)
+map(
+  { "n", "x" },
+  "<Down>",
+  "v:count == 0 ? 'gj' : 'j'",
+  { desc = "Down", expr = true, silent = true }
+)
+map(
+  { "n", "x" },
+  "k",
+  "v:count == 0 ? 'gk' : 'k'",
+  { desc = "Up", expr = true, silent = true }
+)
+map(
+  { "n", "x" },
+  "<Up>",
+  "v:count == 0 ? 'gk' : 'k'",
+  { desc = "Up", expr = true, silent = true }
+)
+
+-- Clear search and stop snippet on escape
+map({ "i", "n", "s" }, "<esc>", function()
+  vim.cmd("noh")
+  if vim.snippet then
+    vim.snippet.stop()
+  end
+  return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
+
+-- lazy
+map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- better indenting
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+map(
+  "n",
+  "<C-Left>",
+  "<cmd>vertical resize -2<cr>",
+  { desc = "Decrease Window Width" }
+)
+map(
+  "n",
+  "<C-Right>",
+  "<cmd>vertical resize +2<cr>",
+  { desc = "Increase Window Width" }
+)
 
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
