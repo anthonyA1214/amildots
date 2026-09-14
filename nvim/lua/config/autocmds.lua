@@ -23,14 +23,6 @@ autocmd("BufReadPost", {
   end,
 })
 
--- Format on save
-autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function(args)
-    require("conform").format({ bufnr = args.buf })
-  end,
-})
-
 -- removes trailing whitespace on save
 autocmd("BufWritePre", {
   callback = function()

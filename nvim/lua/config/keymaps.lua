@@ -56,7 +56,6 @@ map(
   "<cmd>vertical resize +2<cr>",
   { desc = "Increase Window Width" }
 )
-
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
@@ -80,17 +79,6 @@ map("n", "<leader>bi", function()
   Snacks.bufdelete.invisible()
 end, { desc = "Delete Invisible Buffers" })
 map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
-
--- Top Pickers
-map("n", "<leader><space>", function()
-  Snacks.picker.smart()
-end, { desc = "Smart Find Files" })
-map("n", "<leader>,", function()
-  Snacks.picker.buffers()
-end, { desc = "Buffers" })
-map("n", "<leader>/", function()
-  Snacks.picker.grep()
-end, { desc = "Grep" })
 
 -- nvim ufo
 map("n", "zR", function()

@@ -10,6 +10,7 @@ return {
       bg       = "#161616",
       fg       = "#f2f4f8",
       grey     = "#484848",
+      darkgrey = "#282828",
       yellow   = "#08bdba",
       cyan     = "#33b1ff",
       darkblue = "#6690d9",
@@ -125,6 +126,12 @@ return {
     })
 
     ins_left({
+      "filename",
+      separator = { right = "" },
+      color = { fg = colors.fg, bg = colors.darkgrey },
+    })
+
+    ins_left({
       "diagnostics",
     })
 
@@ -135,7 +142,8 @@ return {
 
     ins_right({
       "filetype",
-      color = { fg = colors.fg, bg = colors.bg },
+      separator = { left = "" },
+      color = { fg = colors.fg, bg = colors.darkgrey },
     })
 
     ins_right({
