@@ -27,3 +27,6 @@ mouse-hide-while-typing = true
 
 # Underline
 adjust-underline-position = 2
+
+custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
+# custom-shader = ~/.config/ghostty/shaders/bloom.glsl
