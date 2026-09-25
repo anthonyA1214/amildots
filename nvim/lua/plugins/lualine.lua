@@ -1,25 +1,25 @@
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "EdenEast/nightfox.nvim",
+  },
   config = function()
     local lualine = require("lualine")
 
-    -- Color table for highlights
-    -- stylua: ignore
-    local colors = {
-      bg       = "#161616",
-      fg       = "#f2f4f8",
-      grey     = "#484848",
-      darkgrey = "#282828",
-      yellow   = "#08bdba",
-      cyan     = "#33b1ff",
-      darkblue = "#6690d9",
-      green    = "#25be6a",
-      orange   = "#3ddbd9",
-      violet   = "#ff7eb6",
-      magenta  = "#be95ff",
-      blue     = "#78a9ff",
-      red      = "#ee5396",
+    local p = require("nightfox.palette").load("carbonfox")
+    local c = {
+      bg1 = p.bg1,
+      bg2 = p.bg2,
+      bg3 = p.bg3,
+      fg1 = p.fg1,
+      blue = p.blue.base,
+      green = p.green.base,
+      red = p.red.base,
+      cyan = p.cyan.base,
+      yellow = p.yellow.base,
+      orange = p.orange.base,
+      magenta = p.magenta.base,
     }
 
     -- Config
@@ -29,8 +29,8 @@ return {
           -- We are going to use lualine_c an lualine_x as left and
           -- right section. Both are highlighted by c theme .  So we
           -- are just setting default looks o statusline
-          normal = { c = { fg = colors.fg, bg = colors.bg } },
-          inactive = { c = { fg = colors.fg, bg = colors.bg } },
+          normal = { c = { fg = c.fg1, bg = c.bg1 } },
+          inactive = { c = { fg = c.fg1, bg = c.bg1 } },
         },
         -- Disable sections and component separators
         component_separators = "",
@@ -93,28 +93,28 @@ return {
       color = function()
         -- auto change color according to neovims mode
         local mode_color = {
-          n = colors.blue,
-          i = colors.green,
-          v = colors.magenta,
-          [""] = colors.magenta,
-          V = colors.magenta,
-          c = colors.yellow,
-          R = colors.red,
-          no = colors.blue,
-          s = colors.cyan,
-          S = colors.cyan,
-          [""] = colors.cyan,
-          ic = colors.green,
-          Rv = colors.red,
-          cv = colors.yellow,
-          ce = colors.yellow,
-          r = colors.cyan,
-          rm = colors.cyan,
-          ["r?"] = colors.cyan,
-          ["!"] = colors.blue,
-          t = colors.orange,
+          n = c.blue,
+          i = c.green,
+          v = c.magenta,
+          [""] = c.magenta,
+          V = c.magenta,
+          c = c.yellow,
+          R = c.red,
+          no = c.blue,
+          s = c.cyan,
+          S = c.cyan,
+          [""] = c.cyan,
+          ic = c.green,
+          Rv = c.red,
+          cv = c.yellow,
+          ce = c.yellow,
+          r = c.cyan,
+          rm = c.cyan,
+          ["r?"] = c.cyan,
+          ["!"] = c.blue,
+          t = c.orange,
         }
-        return { fg = colors.bg, bg = mode_color[vim.fn.mode()] }
+        return { fg = c.bg1, bg = mode_color[vim.fn.mode()] }
       end,
     })
 
@@ -122,13 +122,13 @@ return {
       "branch",
       icon = "",
       separator = { right = "" },
-      color = { fg = colors.fg, bg = colors.grey },
+      color = { fg = c.fg1, bg = c.bg2 },
     })
 
     ins_left({
       "filename",
       separator = { right = "" },
-      color = { fg = colors.fg, bg = colors.darkgrey },
+      color = { fg = c.fg1, bg = c.bg3 },
     })
 
     ins_left({
@@ -137,25 +137,25 @@ return {
 
     ins_right({
       "encoding",
-      color = { fg = colors.fg, bg = colors.bg },
+      color = { fg = c.fg1, bg = c.bg1 },
     })
 
     ins_right({
       "filetype",
       separator = { left = "" },
-      color = { fg = colors.fg, bg = colors.darkgrey },
+      color = { fg = c.fg1, bg = c.bg3 },
     })
 
     ins_right({
       "progress",
       separator = { left = "" },
-      color = { fg = colors.fg, bg = colors.grey },
+      color = { fg = c.fg1, bg = c.bg2 },
     })
 
     ins_right({
       "location",
       separator = { left = "" },
-      color = { fg = colors.bg, bg = colors.blue, gui = "bold" },
+      color = { fg = c.bg1, bg = c.blue, gui = "bold" },
       cond = conditions.buffer_not_empty,
     })
 
