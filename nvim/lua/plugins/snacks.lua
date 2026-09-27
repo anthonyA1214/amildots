@@ -21,10 +21,13 @@ return {
          ░ ░   ░      ░ ░        ░    ░         ░]],
       },
     },
+    image = { enabled = true },
+    indent = { enabled = true },
     input = { enabled = true },
     notifier = { enabled = true },
     notify = { enabled = true },
     picker = { enabled = true },
+    scroll = { enabled = true },
     statuscolumn = {
       enabled = true,
       folds = {
@@ -32,7 +35,6 @@ return {
         git_hl = true,
       },
     },
-    indent = { enabled = true },
     rename = { enabled = true },
   },
   -- stylua: ignore
