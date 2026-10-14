@@ -15,6 +15,10 @@ return {
       toml = { "taplo" },
       yml = { "prettierd", "prettier", stop_after_first = true },
       yaml = { "prettierd", "prettier", stop_after_first = true },
+      html = { "prettierd", "prettier", stop_after_first = true },
+      css = { "prettierd", "prettier", stop_after_first = true },
+      scss = { "prettierd", "prettier", stop_after_first = true },
+      less = { "prettierd", "prettier", stop_after_first = true },
     },
     default_format_opts = {
       lsp_format = "fallback",
