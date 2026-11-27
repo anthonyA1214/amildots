@@ -10,6 +10,11 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      completion = {
+        accept = {
+          resolve_timeout_ms = 1000,
+        },
+      },
       cmdline = {
         keymap = {
           ["<Tab>"] = { "show", "accept" },
