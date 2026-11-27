@@ -4,6 +4,8 @@ return {
   cmd = { "ConformInfo" },
   opts = {
     formatters_by_ft = {
+      c = { "clang_format" },
+      cpp = { "clang_format" },
       lua = { "stylua" },
       python = { "ruff_format" },
       json = { "prettierd", "prettier", stop_after_first = true },
@@ -25,7 +27,7 @@ return {
     },
     format_on_save = {
       -- These options will be passed to conform.format()
-      timeout_ms = 500,
+      timeout_ms = 3000,
       lsp_format = "fallback",
     },
   },
